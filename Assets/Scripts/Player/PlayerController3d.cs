@@ -28,7 +28,7 @@ public class PlayerController3d : MonoBehaviour {
     }
 
     #region Inputs
-
+    [SerializeField] private GameObject playerCamViewport;
     private void GatherInputs() {
         _inputs.RawX = (int) Input.GetAxisRaw("Horizontal");
         _inputs.RawZ = (int) Input.GetAxisRaw("Vertical");
@@ -38,7 +38,7 @@ public class PlayerController3d : MonoBehaviour {
         _dir = new Vector3(_inputs.X, 0, _inputs.Z);
 
         // Set look direction only if dir is not zero, to avoid snapping back to original
-        if (_dir != Vector3.zero) _anim.transform.forward = _dir;
+        if (_dir != Vector3.zero) { _anim.transform.forward = _dir; playerCamViewport.transform.forward = _dir; }
 
         //_anim.SetInteger("RawZ", _inputs.RawZ);
     }
