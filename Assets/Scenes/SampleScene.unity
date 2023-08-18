@@ -205,59 +205,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 196158975}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c9beda531928fc40968802117a5d256, type: 3}
+  m_Script: {fileID: 11500000, guid: a4c41ac9245b87c4192012080077d830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RecenterTarget: 0
-  m_VerticalAxis:
-    Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 300
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
-    m_InputAxisName: Mouse Y
-    m_InputAxisValue: 0
-    m_InvertInput: 1
-    m_MinValue: -65
-    m_MaxValue: 70
-    m_Wrap: 0
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 1
-      m_RecenteringTime: 2
-      m_LegacyHeadingDefinition: -1
-      m_LegacyVelocityFilterStrength: -1
-  m_VerticalRecentering:
-    m_enabled: 0
-    m_WaitTime: 1
-    m_RecenteringTime: 2
-    m_LegacyHeadingDefinition: -1
-    m_LegacyVelocityFilterStrength: -1
-  m_HorizontalAxis:
-    Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 300
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
-    m_InputAxisName: Mouse X
-    m_InputAxisValue: 0
-    m_InvertInput: 0
-    m_MinValue: -70
-    m_MaxValue: 70
-    m_Wrap: 0
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 1
-      m_RecenteringTime: 2
-      m_LegacyHeadingDefinition: -1
-      m_LegacyVelocityFilterStrength: -1
-  m_HorizontalRecentering:
-    m_enabled: 0
-    m_WaitTime: 1
-    m_RecenteringTime: 2
-    m_LegacyHeadingDefinition: -1
-    m_LegacyVelocityFilterStrength: -1
-  m_ApplyBeforeBody: 0
+  m_Damping: 0
 --- !u!114 &196158978
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -943,7 +894,7 @@ Transform:
   m_GameObject: {fileID: 1098131544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 20, y: 1, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1235,6 +1186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 1790101627}
   _anim: {fileID: 1790101628}
+  playerCamViewport: {fileID: 71266041}
   _groundMask:
     serializedVersion: 2
     m_Bits: 64
@@ -1250,33 +1202,9 @@ MonoBehaviour:
   _jumpForce: 15
   _fallMultiplier: 7
   _jumpVelocityFalloff: 8
-  _jumpParticles: {fileID: 0}
-  _jumpLaunchPoof: {fileID: 0}
-  _wallJumpLock: 0.25
   _wallJumpMovementLerp: 20
   _coyoteTime: 0.3
   _enableDoubleJump: 1
-  _wallSlideParticles: {fileID: 0}
-  _slideSpeed: 2
-  _wallGrabParticles: {fileID: 0}
-  _dashSpeed: 30
-  _dashLength: 0.2
-  _dashParticles: {fileID: 0}
-  _dashRing: {fileID: 0}
-  _dashVisual: {fileID: 0}
-  _dashTargetCastRadius: 4
-  _dashTargetCastExtent: 6
-  _dashTargetCastDistance: 15
-  _dashTargetMask:
-    serializedVersion: 2
-    m_Bits: 0
-  _useDashTargets: 1
-  _impactParticles: {fileID: 0}
-  _deathExplosion: {fileID: 0}
-  _minImpactForce: 2
-  _source: {fileID: 0}
-  _landClips: []
-  _dashClips: []
 --- !u!4 &1797546408 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2369712856593335371, guid: 730000931cae1454c8083362445e8f75, type: 3}
