@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -28,6 +29,7 @@ public class PlayerController3d : MonoBehaviour {
     }
 
     #region Inputs
+
     [SerializeField] private GameObject playerCamViewport;
     private void GatherInputs() {
         _inputs.RawX = (int) Input.GetAxisRaw("Horizontal");
@@ -38,9 +40,13 @@ public class PlayerController3d : MonoBehaviour {
         _dir = new Vector3(_inputs.X, 0, _inputs.Z);
 
         // Set look direction only if dir is not zero, to avoid snapping back to original
-        if (_dir != Vector3.zero) { _anim.transform.forward = _dir; playerCamViewport.transform.forward = _dir; }
+        if (_dir != Vector3.zero) 
+        {
+            //_anim.transform.forward = _dir;
+            playerCamViewport.transform.forward = _dir;
+        }
 
-        //_anim.SetInteger("RawZ", _inputs.RawZ);
+        _anim.SetInteger("RawZ", _inputs.RawZ);
     }
 
     #endregion
@@ -125,7 +131,7 @@ public class PlayerController3d : MonoBehaviour {
 
         _rb.velocity = Vector3.MoveTowards(_rb.velocity, idealVel, _currentMovementLerpSpeed * Time.deltaTime);
 
-        //_anim.SetBool("Walking", _dir != Vector3.zero && IsGrounded);
+        _anim.SetBool("Walking", _dir != Vector3.zero && IsGrounded);
     }
 
     #endregion

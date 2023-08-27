@@ -14,6 +14,7 @@ namespace Player.PlayerMovement
         [SerializeField] private LayerMask groundCheckLayerMask;
         [SerializeField] private Vector3 boxSize;
         [SerializeField] private float maxDistance;
+        [SerializeField] private float rotateSpeed;
 
         private Rigidbody rb;
         private float xAxis;
@@ -27,7 +28,7 @@ namespace Player.PlayerMovement
         
         void Update()
         {
-
+            RotatePlayer();
         }
 
         void FixedUpdate()
@@ -59,7 +60,16 @@ namespace Player.PlayerMovement
                 animator.SetTrigger("Stopping");
             }
 
-            rb.velocity = new Vector3(xAxis * moveSpeed, rb.velocity.y, zAxis * moveSpeed);
+            Vector3 forward = Camera.main.transform.forward;
+            Vector3 right = Camera.main.transform.right;
+            forward.y = 0;
+            right.y = 0;
+            forward = forward.normalized;
+            right = right.normalized;
+            Vector3 forwardRelative = forward * zAxis;
+            Vector3 rightRelative = right * xAxis;
+            Vector3 cameraRelative = (forwardRelative + rightRelative) * moveSpeed * Time.fixedDeltaTime;
+            transform.Translate(cameraRelative, Space.World);
         }
 
         private bool GroundCheck()
@@ -71,6 +81,11 @@ namespace Player.PlayerMovement
         {
             Gizmos.color = Color.red;
             Gizmos.DrawCube(transform.position - transform.up * maxDistance, boxSize);
+        }
+
+        private void RotatePlayer()
+        {
+            transform.rotation = new Quaternion(transform.rotation.x, Camera.main.transform.rotation.y, transform.rotation.z, transform.rotation.w);
         }
     }
 }
