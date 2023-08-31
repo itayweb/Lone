@@ -1009,6 +1009,8 @@ MonoBehaviour:
   boxSize: {x: 0, y: 0, z: 0}
   maxDistance: 0
   rotateSpeed: 0
+  grounderOffset: 0
+  grounderRadius: 0
 --- !u!4 &1545111652 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2369712856593335393, guid: 730000931cae1454c8083362445e8f75, type: 3}
@@ -1171,9 +1173,11 @@ MonoBehaviour:
   groundCheckLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  boxSize: {x: 0, y: 0, z: 0}
+  boxSize: {x: 0.5, y: 0.5, z: 0.5}
   maxDistance: -0.5
   rotateSpeed: 2
+  grounderOffset: 0
+  grounderRadius: 0.2
 --- !u!136 &1790101626
 CapsuleCollider:
   m_ObjectHideFlags: 0
