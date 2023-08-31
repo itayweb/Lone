@@ -15,10 +15,13 @@ namespace Player.PlayerMovement
         [SerializeField] private Vector3 boxSize;
         [SerializeField] private float maxDistance;
         [SerializeField] private float rotateSpeed;
+        [SerializeField] private float grounderOffset;
+        [SerializeField] private float grounderRadius;
 
         private Rigidbody rb;
         private float xAxis;
         private float zAxis;
+        private readonly Collider[] _ground = new Collider[1];
 
         void Start()
         {
@@ -39,9 +42,9 @@ namespace Player.PlayerMovement
 
         private void JumpPlayer()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) & GroundCheck())
             {
-                Debug.Log("true");
+                animator.SetTrigger("Jumping");
                 rb.AddForce(Vector3.up * jumpForce);
             }
         }
@@ -74,7 +77,8 @@ namespace Player.PlayerMovement
 
         private bool GroundCheck()
         {
-            return (Physics.BoxCast(transform.position, boxSize, -transform.up, transform.rotation, maxDistance, groundCheckLayerMask));
+            //return (Physics.BoxCast(transform.position, boxSize, -transform.up, transform.rotation, maxDistance, groundCheckLayerMask));
+            return Physics.OverlapSphereNonAlloc(transform.position + new Vector3(0, grounderOffset), grounderRadius, _ground, groundCheckLayerMask) > 0;
         }
 
         private void OnDrawGizmos()
